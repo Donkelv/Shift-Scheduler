@@ -1,0 +1,44 @@
+<script>
+						jQuery(document).ready(function(){
+						jQuery("#cbt").submit(function(e){
+                            
+								e.preventDefault();
+								var formData = jQuery(this).serialize();
+                                      
+                       $.ajax({
+									type:"POST",
+									url:"CBT_processing/login_parse.php",
+									data:formData,
+									success: function(response){
+									if(response =='True')
+									{
+                                          //alert(response);
+									$.jGrowl("Loading File Please Wait......", { sticky: true });
+									$.jGrowl("Welcome", { header: 'Login Successful' });
+									var delay = 1000;
+										  setTimeout((function(){ window.location = 'cbt_processing/welcome.php'  }), delay);
+									  
+									}else
+									{
+                                        	//alert(response);
+									$.jGrowl("This course is not yet available", { header: 'Access Denied' });
+									 
+                                      
+									 }
+									
+                      }
+								});
+								return false;
+							});
+									
+							
+						});							
+							
+				
+						
+						
+						
+						
+						
+						
+						</script>
